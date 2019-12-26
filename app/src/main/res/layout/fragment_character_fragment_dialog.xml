@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="200dp"
     android:layout_height="300dp"
     tools:context=".presentation.fragments.CharacterFragmentDialog">
 
-    <!-- TODO: Update blank fragment layout -->
     <ProgressBar
-        android:id="@+id/progress_fragment_bar"
+        android:id="@+id/progress_bar_fragment"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"/>
     <LinearLayout
+        style="@style/AppTheme"
         android:id="@+id/vertical_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,21 +22,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/hello_blank_fragment" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/description" />
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="@string/character" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/frag_desc"
+            android:id="@+id/frag_description"
             android:text="@string/none"/>
-
         <ImageView
             android:id="@+id/image_view"
             android:layout_width="match_parent"
-            android:layout_height="95dp"
+            android:layout_height="150dp"
             android:layout_gravity="center"
             android:contentDescription="@string/photo"
             tools:src="@tools:sample/avatars" />

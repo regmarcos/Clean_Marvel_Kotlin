@@ -5,6 +5,7 @@ import android.view.View
 import com.puzzlebench.clean_marvel_kotlin.R
 import com.puzzlebench.cmk.domain.model.Character
 import com.puzzlebench.clean_marvel_kotlin.presentation.MainActivity
+import com.puzzlebench.clean_marvel_kotlin.presentation.TAG
 import com.puzzlebench.clean_marvel_kotlin.presentation.adapter.CharacterAdapter
 import com.puzzlebench.clean_marvel_kotlin.presentation.extension.showToast
 import com.puzzlebench.clean_marvel_kotlin.presentation.fragments.CharacterFragmentDialog
@@ -54,6 +55,7 @@ class CharacterView(activity: MainActivity) {
 
     private fun showFragmentDialog(character: Character){
         val fragment = CharacterFragmentDialog.newInstance(character, activityRef.get())
-        fragment.init()
+        val fragmentManager = activityRef.get()?.supportFragmentManager
+        fragment.show(fragmentManager, TAG)
     }
 }
