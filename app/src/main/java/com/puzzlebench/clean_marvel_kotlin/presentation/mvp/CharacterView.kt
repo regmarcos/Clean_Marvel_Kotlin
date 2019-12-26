@@ -41,7 +41,7 @@ class CharacterView(activity: MainActivity) {
     }
 
     fun hideLoading() {
-        activityRef.get()!!.progressBar.visibility = View.GONE
+        activityRef.get()?.let{ it.progressBar.visibility = View.GONE }
     }
 
     fun showCharacters(characters: List<Character>) {
@@ -49,13 +49,12 @@ class CharacterView(activity: MainActivity) {
     }
 
     fun showLoading() {
-        activityRef.get()!!.progressBar.visibility = View.VISIBLE
-
+        activityRef.get()?.let { it.progressBar.visibility = View.VISIBLE }
     }
 
     private fun showFragmentDialog(character: Character){
-        val fragment = CharacterFragmentDialog.newInstance(character, activityRef.get())
+        val fragment = activityRef.get()?.let { CharacterFragmentDialog.newInstance(character, it) }
         val fragmentManager = activityRef.get()?.supportFragmentManager
-        fragment.show(fragmentManager, TAG)
+        fragment?.show(fragmentManager, TAG)
     }
 }

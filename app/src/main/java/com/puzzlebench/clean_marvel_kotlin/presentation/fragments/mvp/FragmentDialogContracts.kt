@@ -17,8 +17,6 @@ interface FragmentDialogContracts {
     }
 
     interface Presenter {
-
         fun init(characterFragment: CharacterFragmentDialog)
-
     }
 }

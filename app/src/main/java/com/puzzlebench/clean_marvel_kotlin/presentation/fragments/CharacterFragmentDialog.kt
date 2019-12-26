@@ -1,6 +1,5 @@
 package com.puzzlebench.clean_marvel_kotlin.presentation.fragments
 
-
 import android.app.Dialog
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
@@ -29,13 +28,12 @@ class CharacterFragmentDialog : DialogFragment() {
     companion object {
         private lateinit var character: Character
         private lateinit var mainActivity: MainActivity
-        fun newInstance(character: Character, activity: MainActivity?): CharacterFragmentDialog {
+        fun newInstance(character: Character, activity: MainActivity): CharacterFragmentDialog {
             this.character = character
-            mainActivity = activity!!
+            mainActivity = activity
             return CharacterFragmentDialog()
         }
     }
-
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)

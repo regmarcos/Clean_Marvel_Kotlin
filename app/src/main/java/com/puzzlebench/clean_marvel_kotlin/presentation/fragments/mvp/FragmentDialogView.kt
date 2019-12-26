@@ -41,10 +41,13 @@ class FragmentDialogView(val activity: MainActivity) : FragmentDialogContracts.V
 
     override fun showLoading(fragment: CharacterFragmentDialog) {
         fragment.progress_bar_fragment.visibility = View.VISIBLE
-
     }
 
     override fun hideLoading(fragment: CharacterFragmentDialog) {
         fragment.progress_bar_fragment.visibility = View.INVISIBLE
+    }
+
+    fun showToastNetworkError(message: String) {
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 }

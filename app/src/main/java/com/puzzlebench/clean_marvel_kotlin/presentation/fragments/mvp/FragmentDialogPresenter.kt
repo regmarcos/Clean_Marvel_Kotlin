@@ -11,17 +11,19 @@ class FragmentDialogPresenter(val view: FragmentDialogView, val model: FragmentD
     }
 
     private fun requestGetSingleCharacter(fragment: CharacterFragmentDialog){
-        //view.showLoading(fragment)
         model.getSingleCharacterServiceUseCase()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { character ->
+                .subscribe ({ character ->
                     if (character.isEmpty()){
                         view.showToastNoItem()
                     } else {
                         view.showDialogFragment(fragment, character.last())
                     }
                     view.hideLoading(fragment)
-                }
+                }, { e ->
+            view.hideLoading(fragment)
+            view.showToastNetworkError(e.message.toString())
+        })
     }
 }
