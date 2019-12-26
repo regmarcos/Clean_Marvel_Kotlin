@@ -24,10 +24,6 @@ class FragmentDialogView(val activity: MainActivity) : FragmentDialogContracts.V
     private val activityRef = WeakReference(activity)
 
     override fun showDialogFragment(characterFragment: CharacterFragmentDialog, character: Character) {
-        setCharacterFragment(characterFragment, character)
-    }
-
-    private fun setCharacterFragment(characterFragment: CharacterFragmentDialog, character: Character) {
         characterFragment.character_name.text = character.name
         characterFragment.frag_description.text = if (character.description.isNotEmpty()) character.description else NO_DESCRIPTION
         val url = "${character.thumbnail.path}$DOT${character.thumbnail.extension}"
