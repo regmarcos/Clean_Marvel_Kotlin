@@ -2,6 +2,7 @@ package com.puzzlebench.clean_marvel_kotlin.presentation.adapter.viewholder
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import com.puzzlebench.clean_marvel_kotlin.presentation.DOT
 import com.puzzlebench.cmk.domain.model.Character
 import com.puzzlebench.clean_marvel_kotlin.presentation.extension.getImageByUrl
 import com.puzzlebench.clean_marvel_kotlin.presentation.listener.CharacterListener
@@ -12,7 +13,7 @@ class CharactersAdapterViewHolder(view: View, val listener: CharacterListener) :
 
     fun bind(item: Character) = with(itemView) {
         tv_item.text = item.name
-        val string = item.thumbnail?.path + "." + item.thumbnail?.extension
+        val string = "${item.thumbnail?.path}$DOT${item.thumbnail?.extension}"
         image_thumbnail.getImageByUrl(string)
         setOnClickListener { listener(item) }
     }
