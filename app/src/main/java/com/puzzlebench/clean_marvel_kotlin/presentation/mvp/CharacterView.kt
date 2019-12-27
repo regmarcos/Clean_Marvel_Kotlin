@@ -19,20 +19,18 @@ class CharacterView(activity: MainActivity) {
     var adapter = CharacterAdapter { character -> showFragmentDialog(character) }
 
     fun init() {
-        val activity = activityRef.get()
-        if (activity != null) {
-            activity.recycleView.layoutManager = GridLayoutManager(activity, SPAN_COUNT)
-            activity.recycleView.adapter = adapter
-            showLoading()
+        activityRef.get()?.let {
+                it.recycleView.layoutManager = GridLayoutManager(it, SPAN_COUNT)
+                it.recycleView.adapter = adapter
+                showLoading()
         }
 
     }
 
     fun showToastNoItemToShow() {
-        val activity = activityRef.get()
-        if (activity != null) {
-            val message = activity.baseContext.resources.getString(R.string.message_no_items_to_show)
-            activity.applicationContext.showToast(message)
+       activityRef.get()?.let {
+            val message = it.baseContext.resources.getString(R.string.message_no_items_to_show)
+            it.applicationContext.showToast(message)
         }
     }
 

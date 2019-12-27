@@ -14,6 +14,7 @@ interface FragmentDialogContracts {
         fun showToastNoItem()
         fun showLoading(fragment: CharacterFragmentDialog)
         fun hideLoading(fragment: CharacterFragmentDialog)
+        fun showToastNetworkError(message: String)
     }
 
     interface Presenter {

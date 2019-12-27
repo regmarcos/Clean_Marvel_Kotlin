@@ -25,8 +25,8 @@ class FragmentDialogView(val activity: MainActivity) : FragmentDialogContracts.V
 
     override fun showDialogFragment(characterFragment: CharacterFragmentDialog, character: Character) {
         characterFragment.character_name.text = character.name
-        characterFragment.frag_description.text = if (character.description.isNotEmpty()) character.description else NO_DESCRIPTION
-        val url = "${character.thumbnail.path}$DOT${character.thumbnail.extension}"
+        characterFragment.frag_description.text = character.description
+        val url = "${character.thumbnail?.path}$DOT${character.thumbnail?.extension}"
         characterFragment.image_view.getImageByUrl(url)
         val size = Point()
         (activity.getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay.getSize(size)
@@ -44,10 +44,10 @@ class FragmentDialogView(val activity: MainActivity) : FragmentDialogContracts.V
     }
 
     override fun hideLoading(fragment: CharacterFragmentDialog) {
-        fragment.progress_bar_fragment.visibility = View.INVISIBLE
+        fragment.progress_bar_fragment.visibility = View.GONE
     }
 
-    fun showToastNetworkError(message: String) {
+    override fun showToastNetworkError(message: String) {
         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 }
