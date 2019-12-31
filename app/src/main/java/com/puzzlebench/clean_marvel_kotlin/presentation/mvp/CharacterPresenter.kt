@@ -36,11 +36,22 @@ class CharacterPresenter constructor(view: CharacterView,
                 view.showCharacters(characters)
             }
             view.hideLoading()
+            view.showFAB()
 
         }, { e ->
             view.hideLoading()
+            view.showFAB()
             view.showToastNetworkError(e.message.toString())
         })
         subscriptions.add(subscription)
+    }
+
+    fun onClickFAB() {
+        characters = emptyList()
+        view.hideFAB()
+        view.showCharacters(characters)
+        view.showLoading()
+        requestGetCharacters()
+
     }
 }

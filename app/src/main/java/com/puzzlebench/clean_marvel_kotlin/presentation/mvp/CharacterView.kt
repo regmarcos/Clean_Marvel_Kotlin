@@ -1,6 +1,6 @@
 package com.puzzlebench.clean_marvel_kotlin.presentation.mvp
 
-import android.support.v7.widget.GridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import android.view.View
 import com.puzzlebench.clean_marvel_kotlin.R
 import com.puzzlebench.cmk.domain.model.Character
@@ -9,6 +9,7 @@ import com.puzzlebench.clean_marvel_kotlin.presentation.TAG
 import com.puzzlebench.clean_marvel_kotlin.presentation.adapter.CharacterAdapter
 import com.puzzlebench.clean_marvel_kotlin.presentation.extension.showToast
 import com.puzzlebench.clean_marvel_kotlin.presentation.fragments.CharacterFragmentDialog
+import kotlinx.android.synthetic.main.activity_main.floating_action_button
 import kotlinx.android.synthetic.main.activity_main.progressBar
 import kotlinx.android.synthetic.main.activity_main.recycleView
 import java.lang.ref.WeakReference
@@ -50,9 +51,18 @@ class CharacterView(activity: MainActivity) {
         activityRef.get()?.let { it.progressBar.visibility = View.VISIBLE }
     }
 
+    fun showFAB() {
+        activityRef.get()?.let { it.floating_action_button.visibility = View.VISIBLE }
+    }
+
+    fun hideFAB() {
+        activityRef.get()?.let { it.floating_action_button.visibility = View.GONE }
+    }
+
     private fun showFragmentDialog(character: Character){
-        val fragment = activityRef.get()?.let { CharacterFragmentDialog.newInstance(character, it) }
-        val fragmentManager = activityRef.get()?.supportFragmentManager
-        fragment?.show(fragmentManager, TAG)
+        val fragmentManager = activityRef.let{it.get()?.supportFragmentManager}
+        fragmentManager?.let {
+            activityRef.get()?.let { CharacterFragmentDialog.newInstance(character, it) }?.show(it, TAG)
+        }
     }
 }

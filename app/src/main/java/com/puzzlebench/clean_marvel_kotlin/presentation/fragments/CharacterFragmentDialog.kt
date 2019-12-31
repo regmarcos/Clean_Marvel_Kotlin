@@ -2,8 +2,8 @@ package com.puzzlebench.clean_marvel_kotlin.presentation.fragments
 
 import android.app.Dialog
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
-import android.support.v4.app.Fragment
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,7 +45,7 @@ class CharacterFragmentDialog : DialogFragment() {
         return inflater.inflate(R.layout.fragment_character_fragment_dialog, container)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         presenter.init(this)
         super.onViewCreated(view, savedInstanceState)
     }
