@@ -41,5 +41,16 @@
         android:src="@drawable/database_fab_icon"
         app:backgroundTint="#353892" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/clear_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@android:drawable/ic_menu_delete"
+        app:backgroundTint="#353892" />
+
 
 </FrameLayout>

@@ -9,6 +9,7 @@ import com.puzzlebench.clean_marvel_kotlin.presentation.TAG
 import com.puzzlebench.clean_marvel_kotlin.presentation.adapter.CharacterAdapter
 import com.puzzlebench.clean_marvel_kotlin.presentation.extension.showToast
 import com.puzzlebench.clean_marvel_kotlin.presentation.fragments.CharacterFragmentDialog
+import kotlinx.android.synthetic.main.activity_main.clear_fab
 import kotlinx.android.synthetic.main.activity_main.database_fab
 import kotlinx.android.synthetic.main.activity_main.progressBar
 import kotlinx.android.synthetic.main.activity_main.recycleView
@@ -55,11 +56,13 @@ class CharacterView(activity: MainActivity) {
     fun showFAB() {
         activityRef.get()?.let { it.refresh_fab.visibility = View.VISIBLE }
         activityRef.get()?.let { it.database_fab.visibility = View.VISIBLE }
+        activityRef.get()?.let { it.clear_fab.visibility = View.VISIBLE }
     }
 
     fun hideFAB() {
         activityRef.get()?.let { it.refresh_fab.visibility = View.GONE }
-        activityRef.get()?.let { it.database_fab.visibility = View.VISIBLE }
+        activityRef.get()?.let { it.database_fab.visibility = View.GONE }
+        activityRef.get()?.let { it.clear_fab.visibility = View.GONE }
     }
 
     private fun showFragmentDialog(character: Character){

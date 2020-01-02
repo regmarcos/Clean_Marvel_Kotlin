@@ -12,11 +12,11 @@ android {
     }
     buildToolsVersion = '28.0.3'
     def globalConfiguration = rootProject.extensions.getByName("ext")
-    compileSdkVersion = 28
+    compileSdkVersion = globalConfiguration["androidCompileSdkVersion"]
 
     defaultConfig {
-        minSdkVersion 22
-        targetSdkVersion 28
+        minSdkVersion globalConfiguration["androidMinSdkVersion"]
+        targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

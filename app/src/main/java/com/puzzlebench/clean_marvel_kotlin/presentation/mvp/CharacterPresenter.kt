@@ -1,6 +1,8 @@
 package com.puzzlebench.clean_marvel_kotlin.presentation.mvp
 
+import android.util.Log
 import com.puzzlebench.clean_marvel_kotlin.presentation.base.Presenter
+import com.puzzlebench.cmk.data.repository.CharacterDataRepository
 import com.puzzlebench.cmk.domain.model.Character
 import com.puzzlebench.cmk.domain.usecase.GetCharacterRepositoryUseCase
 import com.puzzlebench.cmk.domain.usecase.GetCharacterServiceUseCase
@@ -28,7 +30,10 @@ class CharacterPresenter constructor(view: CharacterView,
     }
 
     private fun requestGetCharacters() {
-        val subscription = getCharacterServiceUseCase.invoke().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe({ characters ->
+        val subscription = getCharacterServiceUseCase.invoke()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ characters ->
             if (characters.isEmpty()) {
                 view.showToastNoItemToShow()
             } else {
@@ -37,8 +42,7 @@ class CharacterPresenter constructor(view: CharacterView,
             }
             view.hideLoading()
             view.showFAB()
-
-        }, { e ->
+                }, { e ->
             view.hideLoading()
             view.showFAB()
             view.showToastNetworkError(e.message.toString())
@@ -46,12 +50,29 @@ class CharacterPresenter constructor(view: CharacterView,
         subscriptions.add(subscription)
     }
 
-    fun onClickFAB() {
+    fun onClickRefreshFAB() {
         characters = emptyList()
         view.hideFAB()
         view.showCharacters(characters)
         view.showLoading()
         requestGetCharacters()
-
     }
+
+    fun onClickDatabaseFAB() {
+        view.hideFAB()
+        characters = emptyList()
+        view.showCharacters(characters)
+        view.showLoading()
+        characters = getCharacterRepositoryUseCase.invoke()
+        view.showCharacters(characters)
+        Log.d("characters", characters.toString())
+        view.showFAB()
+        view.hideLoading()
+    }
+
+    fun onClickClearFAB() {
+        characters = emptyList()
+        view.showCharacters(characters)
+    }
+
 }
