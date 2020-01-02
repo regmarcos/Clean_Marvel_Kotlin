@@ -1,5 +1,6 @@
 package com.puzzlebench.clean_marvel_kotlin.presentation.base
 
+import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import io.reactivex.disposables.CompositeDisposable
 
@@ -16,4 +17,6 @@ open class BaseRxActivity : AppCompatActivity() {
         super.onPause()
         subscriptions.clear()
     }
+
+    open fun onCreate(savedInstanceState: Bundle?) {}
 }

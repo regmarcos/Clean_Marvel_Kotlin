@@ -5,32 +5,32 @@ import android.view.View
 import com.puzzlebench.clean_marvel_kotlin.R
 import com.puzzlebench.cmk.domain.model.Character
 import com.puzzlebench.clean_marvel_kotlin.presentation.MainActivity
+import com.puzzlebench.clean_marvel_kotlin.presentation.TAG
 import com.puzzlebench.clean_marvel_kotlin.presentation.adapter.CharacterAdapter
 import com.puzzlebench.clean_marvel_kotlin.presentation.extension.showToast
-import kotlinx.android.synthetic.main.activity_main.*
+import com.puzzlebench.clean_marvel_kotlin.presentation.fragments.CharacterFragmentDialog
+import kotlinx.android.synthetic.main.activity_main.progressBar
+import kotlinx.android.synthetic.main.activity_main.recycleView
 import java.lang.ref.WeakReference
 
 class CharacterView(activity: MainActivity) {
     private val activityRef = WeakReference(activity)
     private val SPAN_COUNT = 1
-    var adapter = CharacterAdapter { character -> activity.applicationContext.showToast(character.name) }
+    var adapter = CharacterAdapter { character -> showFragmentDialog(character) }
 
     fun init() {
-        val activity = activityRef.get()
-        if (activity != null) {
-            activity.recycleView.layoutManager = GridLayoutManager(activity, SPAN_COUNT)
-            activity.recycleView.adapter = adapter
-            showLoading()
+        activityRef.get()?.let {
+                it.recycleView.layoutManager = GridLayoutManager(it, SPAN_COUNT)
+                it.recycleView.adapter = adapter
+                showLoading()
         }
 
     }
 
     fun showToastNoItemToShow() {
-        val activity = activityRef.get()
-        if (activity != null) {
-            val message = activity.baseContext.resources.getString(R.string.message_no_items_to_show)
-            activity.applicationContext.showToast(message)
-
+       activityRef.get()?.let {
+            val message = it.baseContext.resources.getString(R.string.message_no_items_to_show)
+            it.applicationContext.showToast(message)
         }
     }
 
@@ -39,7 +39,7 @@ class CharacterView(activity: MainActivity) {
     }
 
     fun hideLoading() {
-        activityRef.get()!!.progressBar.visibility = View.GONE
+        activityRef.get()?.let{ it.progressBar.visibility = View.GONE }
     }
 
     fun showCharacters(characters: List<Character>) {
@@ -47,7 +47,12 @@ class CharacterView(activity: MainActivity) {
     }
 
     fun showLoading() {
-        activityRef.get()!!.progressBar.visibility = View.VISIBLE
+        activityRef.get()?.let { it.progressBar.visibility = View.VISIBLE }
+    }
 
+    private fun showFragmentDialog(character: Character){
+        val fragment = activityRef.get()?.let { CharacterFragmentDialog.newInstance(character, it) }
+        val fragmentManager = activityRef.get()?.supportFragmentManager
+        fragment?.show(fragmentManager, TAG)
     }
 }

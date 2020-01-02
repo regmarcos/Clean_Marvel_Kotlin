@@ -5,4 +5,5 @@ import io.reactivex.Single
 
 interface CharacterServices {
     fun getCharacters(): Single<List<Character>>
+    fun getCharactersById(id: Int?): Single<List<Character>>
 }

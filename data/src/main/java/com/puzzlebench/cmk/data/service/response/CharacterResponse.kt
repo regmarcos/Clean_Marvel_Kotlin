@@ -1,7 +1,8 @@
 package com.puzzlebench.cmk.data.service.response
 
-class CharacterResponse (
-        val name: String,
-        val description: String,
+class CharacterResponse(
+        val id: Int?,
+        val name: String?,
+        val description: String?,
         val thumbnail: ThumbnailResponse
 )
