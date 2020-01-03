@@ -49,4 +49,9 @@ class CharacterFragmentDialog : DialogFragment() {
         presenter.init(this)
         super.onViewCreated(view, savedInstanceState)
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.dispose()
+    }
 }

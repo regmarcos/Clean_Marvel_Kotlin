@@ -2,7 +2,6 @@ package com.puzzlebench.clean_marvel_kotlin.presentation.mvp
 
 import android.util.Log
 import com.puzzlebench.clean_marvel_kotlin.presentation.base.Presenter
-import com.puzzlebench.cmk.data.repository.CharacterDataRepository
 import com.puzzlebench.cmk.domain.model.Character
 import com.puzzlebench.cmk.domain.usecase.GetCharacterRepositoryUseCase
 import com.puzzlebench.cmk.domain.usecase.GetCharacterServiceUseCase
@@ -65,7 +64,6 @@ class CharacterPresenter constructor(view: CharacterView,
         view.showLoading()
         characters = getCharacterRepositoryUseCase.invoke()
         view.showCharacters(characters)
-        Log.d("characters", characters.toString())
         view.showFAB()
         view.hideLoading()
     }
