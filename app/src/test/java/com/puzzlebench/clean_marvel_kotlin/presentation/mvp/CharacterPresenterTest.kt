@@ -49,7 +49,6 @@ class CharacterPresenterTest {
     }
 
     @Ignore
-    @Test
     fun init() {
         val itemsCharacters = listOf(1..5).map {
             mock(Character::class.java)
@@ -66,7 +65,6 @@ class CharacterPresenterTest {
     }
 
     @Ignore
-    @Test
     fun reposeWithError() {
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(Single.error(Exception("")))
         characterPresenter.init()
@@ -77,7 +75,6 @@ class CharacterPresenterTest {
     }
 
     @Ignore
-    @Test
     fun reposeWithItemToShow() {
         val itemsCharacters = listOf(1..5).map {
             mock(Character::class.java)
@@ -92,7 +89,6 @@ class CharacterPresenterTest {
     }
 
     @Ignore
-    @Test
     fun reposeWithoutItemToShow() {
         val itemsCharacters = emptyList<Character>()
         val observable = Single.just(itemsCharacters)
