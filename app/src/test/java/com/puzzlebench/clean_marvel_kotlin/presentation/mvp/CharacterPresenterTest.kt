@@ -44,10 +44,7 @@ class CharacterPresenterTest {
                 getCharacterRepositoryUseCase,
                 saveCharacterRepositoryUseCase,
                 subscriptions)
-
-
     }
-
 
     @Test
     fun init() {
@@ -63,11 +60,9 @@ class CharacterPresenterTest {
         verify(characterRepository).getAll()
         verify(view).hideLoading()
         verify(view).showCharacters(itemsCharacters)
-
-
     }
 
-    @Ignore
+    @Test
     fun reposeWithError() {
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(Single.error(Exception("")))
         characterPresenter.init()
@@ -75,10 +70,9 @@ class CharacterPresenterTest {
         verify(characterServiceImp).getCharacters()
         verify(view).hideLoading()
         verify(view).showToastNetworkError("")
-
     }
 
-    @Ignore
+    @Test
     fun reposeWithItemToShow() {
         val itemsCharacters = listOf(1..5).map {
             mock(Character::class.java)
@@ -90,11 +84,9 @@ class CharacterPresenterTest {
         verify(characterServiceImp).getCharacters()
         verify(view).hideLoading()
         verify(view).showCharacters(itemsCharacters)
-
-
     }
 
-    @Ignore
+    @Test
     fun reposeWithoutItemToShow() {
         val itemsCharacters = emptyList<Character>()
         val observable = Single.just(itemsCharacters)
@@ -102,9 +94,5 @@ class CharacterPresenterTest {
         characterPresenter.init()
         verify(view).init()
         verify(characterServiceImp).getCharacters()
-
-
     }
-
-
 }
