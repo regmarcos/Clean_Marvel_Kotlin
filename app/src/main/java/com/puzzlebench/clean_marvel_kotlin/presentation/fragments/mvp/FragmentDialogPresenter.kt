@@ -24,9 +24,9 @@ class FragmentDialogPresenter(val view: FragmentDialogView, val model: FragmentD
                     }
                     view.hideLoading(fragment)
                 }, { e ->
-            view.hideLoading(fragment)
-            view.showToastNetworkError(e.message.toString())
-        })
+                    view.hideLoading(fragment)
+                    view.showToastNetworkError(e.message.toString())
+                })
     }
 
     fun dispose(){

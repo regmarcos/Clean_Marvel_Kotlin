@@ -38,7 +38,7 @@ dependencies {
 
     implementation generalDependencies.rxAndroid,
             generalDependencies.rxJava,
-            generalDependencies.appSupport,
+            generalDependencies.androidXAppCompat,
             generalDependencies.kotlin
 
     testImplementation generalTestDependencies.mockito,

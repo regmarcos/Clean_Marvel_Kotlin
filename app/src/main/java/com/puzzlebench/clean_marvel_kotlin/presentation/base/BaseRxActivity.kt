@@ -16,4 +16,5 @@ open class BaseRxActivity : AppCompatActivity() {
         super.onPause()
         subscriptions.clear()
     }
+
 }
