@@ -1,5 +1,6 @@
 package com.puzzlebench.clean_marvel_kotlin.presentation.mvp
 
+import android.util.Log
 import com.puzzlebench.clean_marvel_kotlin.presentation.base.Presenter
 import com.puzzlebench.cmk.domain.model.Character
 import com.puzzlebench.cmk.domain.usecase.GetCharacterRepositoryUseCase
@@ -28,7 +29,10 @@ class CharacterPresenter constructor(view: CharacterView,
     }
 
     private fun requestGetCharacters() {
-        val subscription = getCharacterServiceUseCase.invoke().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe({ characters ->
+        val subscription = getCharacterServiceUseCase.invoke()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ characters ->
             if (characters.isEmpty()) {
                 view.showToastNoItemToShow()
             } else {
@@ -36,11 +40,33 @@ class CharacterPresenter constructor(view: CharacterView,
                 view.showCharacters(characters)
             }
             view.hideLoading()
-
-        }, { e ->
+            view.showFAB()
+                }, { e ->
             view.hideLoading()
+            view.showFAB()
             view.showToastNetworkError(e.message.toString())
         })
         subscriptions.add(subscription)
     }
+
+    fun onClickRefreshFAB() {
+        view.hideFAB()
+        view.showCharacters(emptyList())
+        view.showLoading()
+        requestGetCharacters()
+    }
+
+    fun onClickDatabaseFAB() {
+        view.hideFAB()
+        view.showCharacters(emptyList())
+        view.showLoading()
+        view.showCharacters(getCharacterRepositoryUseCase.invoke())
+        view.showFAB()
+        view.hideLoading()
+    }
+
+    fun onClickClearFAB() {
+        view.showCharacters(emptyList())
+    }
+
 }

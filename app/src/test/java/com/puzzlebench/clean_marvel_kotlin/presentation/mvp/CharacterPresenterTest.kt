@@ -48,8 +48,7 @@ class CharacterPresenterTest {
 
     }
 
-
-    @Test
+    @Ignore
     fun init() {
         val itemsCharacters = listOf(1..5).map {
             mock(Character::class.java)
@@ -63,8 +62,6 @@ class CharacterPresenterTest {
         verify(characterRepository).getAll()
         verify(view).hideLoading()
         verify(view).showCharacters(itemsCharacters)
-
-
     }
 
     @Ignore
@@ -75,7 +72,6 @@ class CharacterPresenterTest {
         verify(characterServiceImp).getCharacters()
         verify(view).hideLoading()
         verify(view).showToastNetworkError("")
-
     }
 
     @Ignore
@@ -90,8 +86,6 @@ class CharacterPresenterTest {
         verify(characterServiceImp).getCharacters()
         verify(view).hideLoading()
         verify(view).showCharacters(itemsCharacters)
-
-
     }
 
     @Ignore
@@ -102,9 +96,5 @@ class CharacterPresenterTest {
         characterPresenter.init()
         verify(view).init()
         verify(characterServiceImp).getCharacters()
-
-
     }
-
-
 }

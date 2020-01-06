@@ -12,6 +12,9 @@ import com.puzzlebench.clean_marvel_kotlin.presentation.base.BaseRxActivity
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterPresenter
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterView
 import com.puzzlebench.cmk.domain.usecase.SaveCharacterRepositoryUseCase
+import kotlinx.android.synthetic.main.activity_main.clear_fab
+import kotlinx.android.synthetic.main.activity_main.database_fab
+import kotlinx.android.synthetic.main.activity_main.refresh_fab
 
 class MainActivity : BaseRxActivity() {
 
@@ -29,5 +32,12 @@ class MainActivity : BaseRxActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         presenter.init()
+        setListeners()
+    }
+
+    fun setListeners(){
+        refresh_fab.setOnClickListener { presenter.onClickRefreshFAB() }
+        database_fab.setOnClickListener { presenter.onClickDatabaseFAB() }
+        clear_fab.setOnClickListener { presenter.onClickClearFAB() }
     }
 }

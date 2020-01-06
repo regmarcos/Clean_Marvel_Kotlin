@@ -3,10 +3,14 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
-
 android {
-    def globalConfiguration = rootProject.extensions.getByName("ext")
 
+    compileOptions {
+        targetCompatibility = 1.7
+        sourceCompatibility = 1.7
+    }
+    buildToolsVersion = '28.0.3'
+    def globalConfiguration = rootProject.extensions.getByName("ext")
     compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
     defaultConfig {
         applicationId "com.puzzlebench.clean_marvel_kotlin"
@@ -14,10 +18,9 @@ android {
         targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -29,8 +32,6 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':domain')
     implementation project(':data')
-    implementation "androidx.cardview:cardview:1.0.0"
-
 
     def generalDependencies = rootProject.ext.generalDependencies
     def generalTestDependencies = rootProject.ext.generalTestDependencies
@@ -38,20 +39,19 @@ dependencies {
 
     implementation generalDependencies.rxAndroid,
             generalDependencies.rxJava,
-            generalDependencies.appSupport,
+            generalDependencies.androidXAppCompat,
             generalDependencies.kotlin
-
 
     implementation appDependencies.picasso,
             appDependencies.recyclerView,
-            appDependencies.constraintLayout
+            appDependencies.constraintLayout,
+            appDependencies.cardView,
+            appDependencies.material
 
     testImplementation generalTestDependencies.mockito,
             generalTestDependencies.junit,
             generalTestDependencies.mockitoInline,
             generalTestDependencies.kotlinTest
-
-
 }
 
 android.testOptions.unitTests.all {

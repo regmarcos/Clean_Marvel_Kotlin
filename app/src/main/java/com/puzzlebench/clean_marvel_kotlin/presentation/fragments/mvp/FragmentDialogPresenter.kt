@@ -7,7 +7,7 @@ import io.reactivex.schedulers.Schedulers
 
 class FragmentDialogPresenter(val view: FragmentDialogView, val model: FragmentDialogModel): FragmentDialogContracts.Presenter {
 
-    private lateinit var disposable: Disposable
+    private lateinit var disposable:Disposable
     override fun init(characterFragment: CharacterFragmentDialog) {
         requestGetSingleCharacter(characterFragment)
     }
