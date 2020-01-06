@@ -50,27 +50,23 @@ class CharacterPresenter constructor(view: CharacterView,
     }
 
     fun onClickRefreshFAB() {
-        characters = emptyList()
         view.hideFAB()
-        view.showCharacters(characters)
+        view.showCharacters(emptyList())
         view.showLoading()
         requestGetCharacters()
     }
 
     fun onClickDatabaseFAB() {
         view.hideFAB()
-        characters = emptyList()
-        view.showCharacters(characters)
+        view.showCharacters(emptyList())
         view.showLoading()
-        characters = getCharacterRepositoryUseCase.invoke()
-        view.showCharacters(characters)
+        view.showCharacters(getCharacterRepositoryUseCase.invoke())
         view.showFAB()
         view.hideLoading()
     }
 
     fun onClickClearFAB() {
-        characters = emptyList()
-        view.showCharacters(characters)
+        view.showCharacters(emptyList())
     }
 
 }

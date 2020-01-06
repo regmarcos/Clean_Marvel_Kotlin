@@ -16,7 +16,7 @@ class CharactersAdapterViewHolder(view: View, val listener: CharacterListener) :
         val string = item.thumbnail?.run {
             "${path}$DOT${extension}"
         }
-        image_thumbnail.getImageByUrl(string)
+        string?.let { image_thumbnail.getImageByUrl(it) }
         setOnClickListener { listener(item) }
     }
 }

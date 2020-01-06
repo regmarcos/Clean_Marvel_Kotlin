@@ -32,6 +32,10 @@ class MainActivity : BaseRxActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         presenter.init()
+        setListeners()
+    }
+
+    fun setListeners(){
         refresh_fab.setOnClickListener { presenter.onClickRefreshFAB() }
         database_fab.setOnClickListener { presenter.onClickDatabaseFAB() }
         clear_fab.setOnClickListener { presenter.onClickClearFAB() }
