@@ -34,14 +34,14 @@ class FragmentDialogPresenterTest {
     private lateinit var presenter: FragmentDialogPresenter
 
     companion object {
-        const val EMPTY_STRING = ""
-        const val ID_EXAMPLE = 0
+        const val NET_ERROR = "Network error"
+        const val ID_VALID_CHARACTER = 0
 
         @BeforeClass
         @JvmStatic
         fun setUpClass() {
             val immediate = object : Scheduler() {
-                var noDelay = ID_EXAMPLE
+                var noDelay = ID_VALID_CHARACTER
                 override fun scheduleDirect(run: Runnable, delay: Long, unit: TimeUnit): Disposable {
                     return super.scheduleDirect(run, noDelay.toLong(), unit) // Prevents StackOverflowErrors when scheduling with a delay
                 }
@@ -62,9 +62,9 @@ class FragmentDialogPresenterTest {
     @Before
     fun setUp() {
         RxAndroidPlugins.setInitMainThreadSchedulerHandler { Schedulers.trampoline() }
-        getSingleCharacterServiceUseCase = GetSingleCharacterServiceUseCase(characterServiceImp, ID_EXAMPLE)
+        getSingleCharacterServiceUseCase = GetSingleCharacterServiceUseCase(characterServiceImp, ID_VALID_CHARACTER)
         model = FragmentDialogModel(getSingleCharacterServiceUseCase)
-        presenter = FragmentDialogPresenter(view,model)
+        presenter = FragmentDialogPresenter(view, model)
     }
 
     @Test
@@ -79,11 +79,11 @@ class FragmentDialogPresenterTest {
 
     @Test
     fun reposeWithError() {
-        `when`(getSingleCharacterServiceUseCase.invoke()).thenReturn(Single.error(Exception(EMPTY_STRING)))
+        `when`(getSingleCharacterServiceUseCase.invoke()).thenReturn(Single.error(Exception(NET_ERROR)))
         presenter.init(fragmentDialog)
-        verify(characterServiceImp).getCharactersById(ID_EXAMPLE)
+        verify(characterServiceImp).getCharactersById(ID_VALID_CHARACTER)
         verify(view).hideLoading(fragmentDialog)
-        verify(view).showToastNetworkError(EMPTY_STRING)
+        verify(view).showToastNetworkError(NET_ERROR)
     }
 
     @Test
@@ -103,12 +103,12 @@ class FragmentDialogPresenterTest {
         val observable = Single.just(item)
         `when`(getSingleCharacterServiceUseCase.invoke()).thenReturn(observable)
         presenter.init(fragmentDialog)
-        verify(characterServiceImp).getCharactersById(ID_EXAMPLE)
+        verify(characterServiceImp).getCharactersById(ID_VALID_CHARACTER)
         verify(view).hideLoading(fragmentDialog)
         verify(view).showToastNoItem()
     }
 
-    private fun getCharacter(): List<Character> = listOf(1..1).map{
+    private fun getCharacter(): List<Character> = listOf(1..1).map {
         mock(Character::class.java)
     }
 }

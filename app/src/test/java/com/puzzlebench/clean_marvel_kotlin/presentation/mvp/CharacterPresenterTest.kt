@@ -11,10 +11,7 @@ import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import org.junit.Before
-import org.junit.Ignore
 import org.junit.Test
-import org.mockito.Mock
-import org.mockito.Mockito
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.times
@@ -34,7 +31,7 @@ class CharacterPresenterTest {
     private lateinit var saveCharacterRepositoryUseCase: SaveCharacterRepositoryUseCase
 
     companion object{
-        const val EMPTY_STRING = ""
+        const val NETWORK_ERROR = "NET ERROR"
     }
 
     @Before
@@ -71,13 +68,13 @@ class CharacterPresenterTest {
 
     @Test
     fun reposeWithError() {
-        `when`(getCharacterServiceUseCase.invoke()).thenReturn(Single.error(Exception("")))
+        `when`(getCharacterServiceUseCase.invoke()).thenReturn(Single.error(Exception(NETWORK_ERROR)))
         characterPresenter.init()
         verify(view).init()
         verify(characterServiceImp).getCharacters()
         verify(view).hideLoading()
         verify(view).showFAB()
-        verify(view).showToastNetworkError("")
+        verify(view).showToastNetworkError(NETWORK_ERROR)
     }
 
     @Test
@@ -107,7 +104,7 @@ class CharacterPresenterTest {
 
     @Test
     fun refreshFABReposeWithNetworkError() {
-        `when`(getCharacterServiceUseCase.invoke()).thenReturn(Single.error(Exception(EMPTY_STRING)))
+        `when`(getCharacterServiceUseCase.invoke()).thenReturn(Single.error(Exception(NETWORK_ERROR)))
         val itemsCharacters = emptyList<Character>()
         characterPresenter.onClickRefreshFAB()
         verify(view).showLoading()
@@ -115,7 +112,7 @@ class CharacterPresenterTest {
         verify(view).showCharacters(itemsCharacters)
         verify(characterServiceImp).getCharacters()
         verify(view).hideLoading()
-        verify(view).showToastNetworkError(EMPTY_STRING)
+        verify(view).showToastNetworkError(NETWORK_ERROR)
     }
 
     @Test
