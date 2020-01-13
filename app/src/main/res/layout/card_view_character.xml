@@ -16,13 +16,7 @@
 
     <TextView
         android:id="@+id/tv_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/default_margin"
-        android:textColor="@android:color/white"
-        android:layout_alignParentStart="true" />
+        style="@style/Marvel.TextViewCardView" />
 
     <View
         android:id="@+id/view"

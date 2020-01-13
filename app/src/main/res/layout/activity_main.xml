@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -21,36 +20,19 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/refresh_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Marvel.FloatingActionButton"
         android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:clickable="true"
-        android:focusable="true"
-        android:src="@android:drawable/stat_notify_sync"
-        app:backgroundTint="@color/fab_color"/>
+        android:src="@android:drawable/stat_notify_sync"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/database_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|start"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:clickable="true"
-        android:focusable="true"
+        style="@style/Marvel.FloatingActionButton"
         android:src="@drawable/database_fab_icon"
-        app:backgroundTint="@color/fab_color" />
+        android:layout_gravity="bottom|start"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/clear_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Marvel.FloatingActionButton"
         android:layout_gravity="bottom|center"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:clickable="true"
-        android:focusable="true"
-        android:src="@android:drawable/ic_menu_delete"
-        app:backgroundTint="@color/fab_color" />
-
-
+        android:src="@android:drawable/ic_menu_delete"/>
 </FrameLayout>

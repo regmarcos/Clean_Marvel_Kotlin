@@ -35,7 +35,7 @@ class MainActivity : BaseRxActivity() {
         setListeners()
     }
 
-    fun setListeners(){
+    private fun setListeners(){
         refresh_fab.setOnClickListener { presenter.onClickRefreshFAB() }
         database_fab.setOnClickListener { presenter.onClickDatabaseFAB() }
         clear_fab.setOnClickListener { presenter.onClickClearFAB() }
