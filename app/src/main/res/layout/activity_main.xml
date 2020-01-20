@@ -12,13 +12,13 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        app:title="Marvel APP"
+        app:title="@string/main_activity_title"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-           android:layout_width="@dimen/landing_screen_width"
-           android:layout_height="@dimen/landing_screen_height"
+           android:layout_width="@dimen/main_activity_toolbar_width"
+           android:layout_height="@dimen/main_activity_toolbar_height"
            android:layout_gravity="end"
            android:src="@drawable/marvel_logo"/>
     </androidx.appcompat.widget.Toolbar>

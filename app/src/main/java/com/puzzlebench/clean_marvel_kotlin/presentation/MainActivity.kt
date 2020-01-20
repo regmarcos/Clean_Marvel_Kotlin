@@ -22,7 +22,6 @@ import kotlinx.android.synthetic.main.activity_main.database_fab
 import kotlinx.android.synthetic.main.activity_main.refresh_fab
 import kotlinx.android.synthetic.main.activity_main.toolbar
 
-
 class MainActivity : BaseRxActivity(), AppCompatCallback {
 
     private val getCharacterServiceUseCase = GetCharacterServiceUseCase(CharacterServicesImpl())
