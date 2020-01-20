@@ -1,5 +1,7 @@
 package com.puzzlebench.clean_marvel_kotlin.presentation.mvp
 
+import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.presenter.CharacterPresenter
+import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.view.CharacterView
 import com.puzzlebench.cmk.domain.model.Character
 import com.puzzlebench.cmk.domain.repository.CharacterRepository
 import com.puzzlebench.cmk.domain.service.CharacterServices

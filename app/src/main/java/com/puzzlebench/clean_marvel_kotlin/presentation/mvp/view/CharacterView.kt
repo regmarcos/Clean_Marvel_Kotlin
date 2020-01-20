@@ -1,4 +1,4 @@
-package com.puzzlebench.clean_marvel_kotlin.presentation.mvp
+package com.puzzlebench.clean_marvel_kotlin.presentation.mvp.view
 
 import androidx.recyclerview.widget.GridLayoutManager
 import android.view.View
