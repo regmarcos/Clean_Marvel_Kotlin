@@ -20,4 +20,8 @@
     <dimen name="height_img_landing_screen">100dp</dimen>
     <dimen name="margin_top_img_landing_screen">50dp</dimen>
     <dimen name="margin_top_progress_bar_landing_screen">350dp</dimen>
+    <dimen name="margin_top_progress_bar_landing_screen_landscape">150dp</dimen>
+    <dimen name="padding_fragment_character">10dp</dimen>
+    <dimen name="margin_text_fragment">5dp</dimen>
+    <dimen name="img_width_fragment">300dp</dimen>
 </resources>

@@ -1,6 +1,7 @@
 package com.puzzlebench.clean_marvel_kotlin.presentation
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatCallback
 import com.puzzlebench.clean_marvel_kotlin.R
 import com.puzzlebench.cmk.data.mapper.repository.CharacterMapperRepository
 import com.puzzlebench.cmk.data.repository.CharacterDataRepository
@@ -15,8 +16,9 @@ import com.puzzlebench.cmk.domain.usecase.SaveCharacterRepositoryUseCase
 import kotlinx.android.synthetic.main.activity_main.clear_fab
 import kotlinx.android.synthetic.main.activity_main.database_fab
 import kotlinx.android.synthetic.main.activity_main.refresh_fab
+import kotlinx.android.synthetic.main.activity_main.toolbar
 
-class MainActivity : BaseRxActivity() {
+class MainActivity : BaseRxActivity(), AppCompatCallback {
 
     private val getCharacterServiceUseCase = GetCharacterServiceUseCase(CharacterServicesImpl())
     private val getCharacterRepositoryUseCase = GetCharacterRepositoryUseCase(CharacterDataRepository(CharacterDataSourceImpl(), CharacterMapperRepository()))
@@ -33,6 +35,7 @@ class MainActivity : BaseRxActivity() {
         setContentView(R.layout.activity_main)
         presenter.init()
         setListeners()
+        setSupportActionBar(toolbar)
     }
 
     private fun setListeners(){

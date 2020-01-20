@@ -3,9 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#353892</color>
-    <color name="fab_color">#353892</color>
+    <color name="fab_color">#3F51B5</color>
     <color name="first_background_landing_screen">#00504949</color>
     <color name="marvel_red_progress_bar">#D53232</color>
     <color name="background_landing_screen">#333030</color>
     <color name="text_color_character_fragment">#333030</color>
+    <color name="white">#ffffff</color>
 </resources>
