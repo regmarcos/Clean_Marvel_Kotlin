@@ -17,12 +17,12 @@ import kotlinx.android.synthetic.main.activity_main.refresh_fab
 import java.lang.ref.WeakReference
 
 class CharacterView(activity: MainActivity) {
-    private val activityRef = WeakReference(activity)
+    private val activity = WeakReference(activity).get()
     private val SPAN_COUNT = 1
     var adapter = CharacterAdapter { character -> showFragmentDialog(character) }
 
     fun init() {
-        activityRef.get()?.let {
+        activity?.let {
                 it.recycleView.layoutManager = GridLayoutManager(it, SPAN_COUNT)
                 it.recycleView.adapter = adapter
                 showLoading()
@@ -31,18 +31,18 @@ class CharacterView(activity: MainActivity) {
     }
 
     fun showToastNoItemToShow() {
-       activityRef.get()?.let {
+       activity?.let {
             val message = it.baseContext.resources.getString(R.string.message_no_items_to_show)
             it.applicationContext.showToast(message)
         }
     }
 
     fun showToastNetworkError(error: String) {
-        activityRef.get()!!.applicationContext.showToast(error)
+        activity?.applicationContext?.showToast(error)
     }
 
     fun hideLoading() {
-        activityRef.get()?.let{ it.progressBar.visibility = View.GONE }
+        activity?.let{ it.progressBar.visibility = View.GONE }
     }
 
     fun showCharacters(characters: List<Character>) {
@@ -50,25 +50,25 @@ class CharacterView(activity: MainActivity) {
     }
 
     fun showLoading() {
-        activityRef.get()?.let { it.progressBar.visibility = View.VISIBLE }
+        activity?.let { it.progressBar.visibility = View.VISIBLE }
     }
 
     fun showFAB() {
-        activityRef.get()?.let { it.refresh_fab.visibility = View.VISIBLE }
-        activityRef.get()?.let { it.database_fab.visibility = View.VISIBLE }
-        activityRef.get()?.let { it.clear_fab.visibility = View.VISIBLE }
+       activity?.let { it.refresh_fab.visibility = View.VISIBLE }
+       activity?.let { it.database_fab.visibility = View.VISIBLE }
+       activity?.let { it.clear_fab.visibility = View.VISIBLE }
     }
 
     fun hideFAB() {
-        activityRef.get()?.let { it.refresh_fab.visibility = View.GONE }
-        activityRef.get()?.let { it.database_fab.visibility = View.GONE }
-        activityRef.get()?.let { it.clear_fab.visibility = View.GONE }
+       activity?.let { it.refresh_fab.visibility = View.GONE }
+       activity?.let { it.database_fab.visibility = View.GONE }
+       activity?.let { it.clear_fab.visibility = View.GONE }
     }
 
     private fun showFragmentDialog(character: Character){
-        val fragmentManager = activityRef.let{it.get()?.supportFragmentManager}
+        val fragmentManager = activity?.supportFragmentManager
         fragmentManager?.let {
-            activityRef.get()?.let { CharacterFragmentDialog.newInstance(character, it) }?.show(it, TAG)
+           activity?.let { CharacterFragmentDialog.newInstance(character, it) }?.show(it, TAG)
         }
     }
 }
