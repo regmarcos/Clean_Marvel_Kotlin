@@ -21,16 +21,14 @@ class MarvelLandingScreenView(activity: MarvelLandingScreenActivity) : MarvelLan
     }
 
     override fun setAnimations() {
-        activityRef.get().let {
-            it?.progress_bar_landing_screen?.isIndeterminate = true
+        activityRef.get()?.let {
+            it.progress_bar_landing_screen.isIndeterminate = true
             val fadeIn = AlphaAnimation(ZERO_FLOAT, ONE_FLOAT)
             fadeIn.duration = DURATION
-            it?.logo_marvel?.animation = fadeIn
-            it?.logo_marvel?.startAnimation(fadeIn)
+            it.logo_marvel.animation = fadeIn
+            it.logo_marvel.startAnimation(fadeIn)
             Handler().postDelayed({
-                if (it != null) {
-                    startActivity(it, getStartIntent(it), null)
-                }
+                startActivity(it, getStartIntent(it), null)
             }, DURATION)
         }
     }
