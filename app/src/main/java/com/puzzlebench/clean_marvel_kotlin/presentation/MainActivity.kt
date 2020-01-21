@@ -8,6 +8,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatCallback
 import com.puzzlebench.clean_marvel_kotlin.R
 import com.puzzlebench.clean_marvel_kotlin.presentation.base.BaseRxActivity
+import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.contracts.CharacterContracts
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.presenter.CharacterPresenter
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.view.CharacterView
 import com.puzzlebench.cmk.data.mapper.repository.CharacterMapperRepository
@@ -28,7 +29,7 @@ class MainActivity : BaseRxActivity(), AppCompatCallback {
     private val getCharacterRepositoryUseCase = GetCharacterRepositoryUseCase(CharacterDataRepository(CharacterDataSourceImpl(), CharacterMapperRepository()))
     private val saveCharacterRepositoryUseCase = SaveCharacterRepositoryUseCase(CharacterDataRepository(CharacterDataSourceImpl(), CharacterMapperRepository()))
 
-    private val presenter = CharacterPresenter(CharacterView(this),
+    private val presenter: CharacterContracts.Presenter = CharacterPresenter(CharacterView(this),
             getCharacterServiceUseCase,
             getCharacterRepositoryUseCase,
             saveCharacterRepositoryUseCase,

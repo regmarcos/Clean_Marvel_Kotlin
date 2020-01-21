@@ -8,10 +8,10 @@ import android.widget.Toast
 import com.puzzlebench.clean_marvel_kotlin.R
 import com.puzzlebench.clean_marvel_kotlin.presentation.DOT
 import com.puzzlebench.clean_marvel_kotlin.presentation.MainActivity
-import com.puzzlebench.clean_marvel_kotlin.presentation.NO_DESCRIPTION
 import com.puzzlebench.clean_marvel_kotlin.presentation.SCREEN_PERCENTAGE
 import com.puzzlebench.clean_marvel_kotlin.presentation.extension.getImageByUrl
 import com.puzzlebench.clean_marvel_kotlin.presentation.fragments.CharacterFragmentDialog
+import com.puzzlebench.clean_marvel_kotlin.presentation.fragments.mvp.contracts.FragmentDialogContracts
 import com.puzzlebench.cmk.domain.model.Character
 import kotlinx.android.synthetic.main.fragment_character_fragment_dialog.character_name
 import kotlinx.android.synthetic.main.fragment_character_fragment_dialog.frag_description

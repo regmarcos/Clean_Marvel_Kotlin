@@ -8,12 +8,12 @@ import com.puzzlebench.clean_marvel_kotlin.presentation.MainActivity.Companion.g
 import com.puzzlebench.clean_marvel_kotlin.presentation.MarvelLandingScreenActivity
 import com.puzzlebench.clean_marvel_kotlin.presentation.ONE_FLOAT
 import com.puzzlebench.clean_marvel_kotlin.presentation.ZERO_FLOAT
-import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.MarvelLandingScreenContracts
+import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.contracts.MarvelLandingScreenContracts
 import kotlinx.android.synthetic.main.activity_marvel_landing_screen.logo_marvel
 import kotlinx.android.synthetic.main.activity_marvel_landing_screen.progress_bar_landing_screen
 import java.lang.ref.WeakReference
 
-class MarvelLandingScreenView(activity: MarvelLandingScreenActivity) : MarvelLandingScreenContracts.view {
+class MarvelLandingScreenView(activity: MarvelLandingScreenActivity) : MarvelLandingScreenContracts.View {
 
     private val activityRef = WeakReference(activity)
     override fun init() {

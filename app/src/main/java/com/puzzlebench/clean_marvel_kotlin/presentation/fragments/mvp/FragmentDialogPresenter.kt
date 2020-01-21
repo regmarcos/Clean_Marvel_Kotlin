@@ -1,11 +1,12 @@
 package com.puzzlebench.clean_marvel_kotlin.presentation.fragments.mvp
 
 import com.puzzlebench.clean_marvel_kotlin.presentation.fragments.CharacterFragmentDialog
+import com.puzzlebench.clean_marvel_kotlin.presentation.fragments.mvp.contracts.FragmentDialogContracts
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-class FragmentDialogPresenter(val view: FragmentDialogView, val model: FragmentDialogModel): FragmentDialogContracts.Presenter {
+class FragmentDialogPresenter(val view: FragmentDialogContracts.View, val model: FragmentDialogContracts.Model): FragmentDialogContracts.Presenter {
 
     private lateinit var disposable:Disposable
     override fun init(characterFragment: CharacterFragmentDialog) {
