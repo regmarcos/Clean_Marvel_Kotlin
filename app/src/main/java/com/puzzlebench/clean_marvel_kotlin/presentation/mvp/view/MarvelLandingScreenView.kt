@@ -15,13 +15,13 @@ import java.lang.ref.WeakReference
 
 class MarvelLandingScreenView(activity: MarvelLandingScreenActivity) : MarvelLandingScreenContracts.View {
 
-    private val activityRef = WeakReference(activity)
+    private val activity = WeakReference(activity).get()
     override fun init() {
         setAnimations()
     }
 
     override fun setAnimations() {
-        activityRef.get()?.let {
+        activity?.let {
             it.progress_bar_landing_screen.isIndeterminate = true
             val fadeIn = AlphaAnimation(ZERO_FLOAT, ONE_FLOAT)
             fadeIn.duration = DURATION

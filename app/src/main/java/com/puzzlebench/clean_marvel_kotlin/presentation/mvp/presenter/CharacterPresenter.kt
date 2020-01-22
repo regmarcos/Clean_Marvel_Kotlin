@@ -1,8 +1,6 @@
 package com.puzzlebench.clean_marvel_kotlin.presentation.mvp.presenter
 
-import com.puzzlebench.clean_marvel_kotlin.presentation.base.Presenter
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.contracts.CharacterContracts
-import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.view.CharacterView
 import com.puzzlebench.cmk.domain.model.Character
 import com.puzzlebench.cmk.domain.usecase.GetCharacterRepositoryUseCase
 import com.puzzlebench.cmk.domain.usecase.GetCharacterServiceUseCase
@@ -11,11 +9,12 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class CharacterPresenter constructor(view: CharacterContracts.View,
-                                     private val getCharacterServiceUseCase: GetCharacterServiceUseCase,
-                                     private val getCharacterRepositoryUseCase: GetCharacterRepositoryUseCase,
-                                     private val saveCharacterRepositoryUseCase: SaveCharacterRepositoryUseCase,
-                                     val subscriptions: CompositeDisposable) : Presenter<CharacterView>(view as CharacterView), CharacterContracts.Presenter {
+class CharacterPresenter(private val view: CharacterContracts.View,
+                         private val getCharacterServiceUseCase: GetCharacterServiceUseCase,
+                         private val getCharacterRepositoryUseCase: GetCharacterRepositoryUseCase,
+                         private val saveCharacterRepositoryUseCase: SaveCharacterRepositoryUseCase,
+                         private val subscriptions: CompositeDisposable
+) : CharacterContracts.Presenter {
 
     lateinit var characters: List<Character>
     override fun init() {

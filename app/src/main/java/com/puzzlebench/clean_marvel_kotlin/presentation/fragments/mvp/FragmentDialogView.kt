@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_character_fragment_dialog.progres
 import kotlinx.android.synthetic.main.fragment_character_fragment_dialog.vertical_layout
 import java.lang.ref.WeakReference
 
-class FragmentDialogView(val activity: MainActivity) : FragmentDialogContracts.View {
+class FragmentDialogView(private val activity: MainActivity) : FragmentDialogContracts.View {
     private val activityRef = WeakReference(activity)
 
     override fun showDialogFragment(characterFragment: CharacterFragmentDialog, character: Character) {
