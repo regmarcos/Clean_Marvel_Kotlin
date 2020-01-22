@@ -5,7 +5,7 @@ ext {
     androidCompileSdkVersion = 28
 
     //General dependencies version
-    androidXAppCompatVersion = '1.0.0'
+    androidXAppCompatVersion = '1.0.2'
     rxAndroidVersion = '2.0.1'
     rxJavaVersion = '2.1.7'
 

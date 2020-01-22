@@ -3,15 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/fragment_width"
     android:layout_height="@dimen/fragment_height"
-    tools:context=".presentation.fragments.CharacterFragmentDialog">
-
+    tools:context=".presentation.fragments.CharacterFragmentDialog"
+    android:background="@color/white"
+    android:padding="@dimen/padding_fragment_character">
     <ProgressBar
         android:id="@+id/progress_bar_fragment"
         android:layout_width="@dimen/progress_bar_size"
         android:layout_height="@dimen/progress_bar_size"
         android:layout_gravity="center"/>
     <LinearLayout
-        style="@style/AppTheme"
         android:id="@+id/vertical_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,20 +19,20 @@
 
         <TextView
             android:id="@+id/character_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            style="@style/Marvel.TextViewCardView"
             android:textSize="@dimen/title_size"
+            android:textColor="@color/colorAccent"
             android:textStyle="bold"
-            android:text="@string/character" />
+            android:layout_margin="@dimen/margin_text_fragment"/>
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:id="@+id/frag_description"
-            android:text="@string/none"/>
+            style="@style/Marvel.TextViewCardView"
+            android:textColor="@color/text_color_character_fragment"
+            android:text="@string/none"
+            android:layout_marginBottom="@dimen/margin_text_fragment"/>
         <ImageView
             android:id="@+id/image_view"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/img_width_fragment"
             android:layout_height="@dimen/img_size"
             android:layout_gravity="center"
             android:contentDescription="@string/photo"

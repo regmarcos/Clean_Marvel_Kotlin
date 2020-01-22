@@ -1,4 +1,4 @@
-package com.puzzlebench.clean_marvel_kotlin.presentation.fragments.mvp
+package com.puzzlebench.clean_marvel_kotlin.presentation.fragments.mvp.contracts
 
 import com.puzzlebench.clean_marvel_kotlin.presentation.fragments.CharacterFragmentDialog
 import com.puzzlebench.cmk.domain.model.Character
@@ -6,7 +6,7 @@ import io.reactivex.Single
 
 interface FragmentDialogContracts {
     interface Model {
-        fun getSingleCharacterServiceUseCase(): Single<List<Character>>?
+        fun getSingleCharacterServiceUseCase(): Single<List<Character>>
     }
 
     interface View {

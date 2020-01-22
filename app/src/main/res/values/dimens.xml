@@ -16,4 +16,16 @@
     <dimen name="card_view_height">200dp</dimen>
     <dimen name="card_radius">20dp</dimen>
     <dimen name="card_view_margin_bottom">5dp</dimen>
+    <dimen name="width_img_landing_screen">300dp</dimen>
+    <dimen name="height_img_landing_screen">100dp</dimen>
+    <dimen name="margin_top_img_landing_screen">50dp</dimen>
+    <dimen name="margin_top_progress_bar_landing_screen">350dp</dimen>
+    <dimen name="margin_top_progress_bar_landing_screen_landscape">150dp</dimen>
+    <dimen name="padding_fragment_character">10dp</dimen>
+    <dimen name="margin_text_fragment">5dp</dimen>
+    <dimen name="img_width_fragment">300dp</dimen>
+    <dimen name="no_border_fab">0dp</dimen>
+    <dimen name="filled_recycle_view">0dp</dimen>
+    <dimen name="main_activity_toolbar_width">100dp</dimen>
+    <dimen name="main_activity_toolbar_height">50dp</dimen>
 </resources>
